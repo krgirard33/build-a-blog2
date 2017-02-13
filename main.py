@@ -38,6 +38,12 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
+
+class Blogs(db.Model):
+    blogtitle = db.StringProperty(required = True)
+    blogpost = db.StringProperty(required = True)
+    blogtitle = db.DateTimeProperty(auto_now_add = True)
+
 class MainHandler(Handler):
     def get(self):
         #self.response.write('Hello world!')
