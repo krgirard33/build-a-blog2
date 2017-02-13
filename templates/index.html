@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<form method="POST">
+    <label>
+                <div>title</div>
+                <input type="text" name="blogtitle" value="{{ blogtitle }}">
+            </label>
+    <label>
+                <div>new words</div>
+                <textarea name="blogpost" value="{{ blogpost }}"></textarea>
+            </label>
+    <div class="error">{{ error }}</div>
+    <input type="submit">
+</form>
+
+<hr> {% for blogpost in blogs %}
+<div class="art">
+    <div class="oldtitle">{{blogs.blogtitle}}</div>
+    <pre class="oldpost">{{blogs.blogpost}}</pre>
+</div>
+{% endfor %} {% endblock %}
