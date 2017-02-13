@@ -39,15 +39,30 @@ class Handler(webapp2.RequestHandler):
         self.write(self.render_str(template, **kw))
 
 
-class Blogs(db.Model):
+class BlogsDB(db.Model):
     blogtitle = db.StringProperty(required = True)
-    blogpost = db.StringProperty(required = True)
-    blogtitle = db.DateTimeProperty(auto_now_add = True)
+    blogpost = db.TextProperty(required = True)
+    created = db.DateTimeProperty(auto_now_add = True)
 
 class MainHandler(Handler):
+    def render_index(self, blogtitle="", blogpost="", error=""):
+        blogs = db.GqlQuery("SELECT * from BlogsDB ORDER BY created Desc")
+
     def get(self):
         #self.response.write('Hello world!')
         self.render("index.html")
+    
+    def post(self):
+        blogtitle = self.request.get("blogtitle")
+        blogpost = self.request.get("blogpost")
+
+        if blogtitle and blogpost:
+            blogs = BlogsDB(blogtitle=blogtitle, blogpost=blogpost)
+            blogs.put()
+            self.redirect("/")
+        else:
+            error = "Excuse me, but something seems to be missing"
+            self.render_index(blogtitle, blogpost, error)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)

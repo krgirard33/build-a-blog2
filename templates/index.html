@@ -3,6 +3,7 @@
     <label>
                 <div>title</div>
                 <input type="text" name="blogtitle" value="{{ blogtitle }}">
+                
             </label>
     <label>
                 <div>new words</div>
@@ -12,8 +13,10 @@
     <input type="submit">
 </form>
 
-<hr> {% for blogpost in blogs %}
-<div class="art">
+<hr>
+<h2>Older post</h2>
+{% for blogpost in blogs %}
+<div class="oldblogs">
     <div class="oldtitle">{{blogs.blogtitle}}</div>
     <pre class="oldpost">{{blogs.blogpost}}</pre>
 </div>
