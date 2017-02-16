@@ -1,23 +1,24 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <form method="POST">
     <label>
                 <div>title</div>
                 <input type="text" name="blogtitle" value="{{ blogtitle }}">
-                
+
             </label>
     <label>
                 <div>new words</div>
                 <textarea name="blogpost" value="{{ blogpost }}"></textarea>
             </label>
     <div class="error">{{ error }}</div>
-    <input type="submit">
+    <input type="submit" vale="Submit">
 </form>
 
 <hr>
 <h2>Older post</h2>
-{% for blogpost in blogs %}
 <div class="oldblogs">
-    <div class="oldtitle">{{blogs.blogtitle}}</div>
-    <pre class="oldpost">{{blogs.blogpost}}</pre>
+{% for blogtitle in dbpost %}
+    <div class="oldtitle"><a href="/blog/{{dbpost.key().id()}}"> {{dbpost.blogtitle}}</a></div>
+    <pre class="oldpost">{{dbpost.blogpost}}</pre>
 </div>
 {% endfor %} {% endblock %}

@@ -8,63 +8,63 @@
         body {
             font-family: "Oregano", sans-serif;
             color: white;
-            text-shadow: 3px 3made px #000000;
+            text-shadow: 2px 2px #000000;
             background-color: #898787;
             width: 800px;
             margin: 0 auto;
             padding: 10px;
         }
-        
+
         .sitetitle p {
             font-size: 22px;
         }
-        
+
         .map {
             position: absolute;
             right: 110px;
             top: 112px;
         }
-        
+
         error {
             color: red;
         }
-        
+
         label {
             display: block;
             font-size: 20px;
         }
-        
+
         input[type=text] {
             width: 400px;
             font-size: 20px;
             padding: 2px;
         }
-        
+
         textarea {
             width: 800px;
             height: 300px;
             font-size: 17px;
             font-family: "Oregano", Arial, Helvetica, sans-serif;
         }
-        
+
         input[type=submit] {
             font-size: 20px;
         }
-        
+
         hr {
             margin: 20px auto;
         }
-        
+
         .art+.art {
             margin-top: 20px;
         }
-        
+
         .oldtitle {
             font-family: "Black Ops One", Arial, Helvetica, sans-serif;
             font-weight: bold;
             font-size: 25px;
         }
-        
+
         .oldpost {
             font-family: "Bahiana", Arial, Helvetica, sans-serif;
             margin: 0;
@@ -79,7 +79,9 @@
         <h1>Words...</h1>
         <p>...convay meanings, thoughts, dreams, observations, promises, comitments, feelings, emotions, and the grocery list</p>
     </div>
-    {% block content %} {% endblock %}
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
 </body>
 
 </html>
